@@ -825,7 +825,7 @@ def generate_assistant_content(teacher_id: int, req: AssistantGenerateRequest, d
                 raise HTTPException(400, "Некорректный режим")
             content = ""
             last_error = None
-            for _ in range(5):
+            for _ in range(20):
                 response = giga.chat(prompt)
                 content = response.choices[0].message.content if response and response.choices else ""
                 normalized = normalize_ai_json(content)
